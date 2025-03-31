@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Global Styles */
+        body {
+            background: url('https://source.unsplash.com/1600x900/?office,technology') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Form Container */
+        .container {
+            background: rgba(207, 208, 229, 0.95);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 420px;
+            width: 100%;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Form Heading */
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* Input Fields */
+        .form-control {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Error Messages */
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Submit Button */
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Enter your full name">
+                <span class="error" id="nameError"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                <span class="error" id="emailError"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Enter password">
+                <span class="error" id="passwordError"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password">
+                <span class="error" id="confirmPasswordError"></span>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input type="checkbox" id="agree" class="form-check-input">
+                <label for="agree" class="form-check-label">I agree to the Terms & Conditions</label>
+                <span class="error" id="agreeError"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let isValid = true;
+            
+            // Clear previous errors
+            document.querySelectorAll('.error').forEach(el => el.textContent = '');
+
+            // Name validation
+            const name = document.getElementById("name").value.trim();
+            if (name.length < 3) {
+                document.getElementById("nameError").textContent = "Name must be at least 3 characters.";
+                isValid = false;
+            }
+
+            // Email validation
+            const email = document.getElementById("email").value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById("emailError").textContent = "Enter a valid email.";
+                isValid = false;
+            }
+
+            // Password validation
+            const password = document.getElementById("password").value.trim();
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+
+            if (!passwordRegex.test(password)) {
+                document.getElementById("passwordError").textContent = 
+                    "Password must be at least 6 characters, include an uppercase, a lowercase, a number, and a special character.";
+                isValid = false;
+            }
+
+            // Confirm password validation
+            const confirmPassword = document.getElementById("confirmPassword").value.trim();
+            if (confirmPassword !== password) {
+                document.getElementById("confirmPasswordError").textContent = "Passwords do not match.";
+                isValid = false;
+            }
+
+            // Agreement checkbox validation
+            const agree = document.getElementById("agree").checked;
+            if (!agree) {
+                document.getElementById("agreeError").textContent = "You must agree to the terms.";
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert("Signup Successful!");
+                window.location.href = "home.html";
+                
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

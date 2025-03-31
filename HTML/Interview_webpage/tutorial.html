@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interview Preparation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top: 70px;
+            background-color: #a4c4e3;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .container {
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 95%;
+            flex: 1;
+        }
+        
+        h2 {
+            color: #333;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            padding-bottom: 56.25%;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+        
+        .video-btn {
+            display: block;
+            width: 100%;
+            margin: 5px 0;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .video-btn:hover {
+            background: #0056b3;
+        }
+
+        footer {
+            background: white;
+            color: black;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-3" href="#">
+                <img src="https://thumbs.dreamstime.com/b/interview-preparation-process-outline-icon-logo-illustration-239665838.jpg" 
+                     alt="logo" width="40" height="50" class="d-inline-block align-text-top"> Interview-<span class="text-primary">Preparation</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-5 text-center">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="user.html">Profile</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="interviewDropdown" role="button" data-bs-toggle="dropdown">
+                            Interviews
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="practice.html">Practice Interviews</a></li>
+                            <li><a class="dropdown-item" href="mock.html">Mock Interviews</a></li>
+                            <li><a class="dropdown-item" href="tips.html">Interview Tips</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="tracking.html">Progress Tracking</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link active" href="tutorial.html">Video Tutorials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="notifications.html">Notifications</a></li>
+                    <li class="nav-item">
+                        <button class="btn btn-success ms-3" onclick="window.location.href='login.html';">LogOut</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Interview Preparation Video Tutorials</h2>
+        <div class="video-container">
+            <iframe id="videoFrame" src="https://www.youtube.com/embed/Ji46s5BHdr0" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="video-list">
+            <button class="video-btn" data-video="https://www.youtube.com/embed/Ji46s5BHdr0">Common Interview Questions</button>
+            <button class="video-btn" data-video="https://www.youtube.com/embed/KCgYDCKqato">Behavioral Interview Tips</button>
+            <button class="video-btn" data-video="https://www.youtube.com/embed/VpJumAZx1t8">How to Answer "Tell Me About Yourself"</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Copyright 2025.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("year").textContent = new Date().getFullYear();
+            const videoButtons = document.querySelectorAll(".video-btn");
+            const videoFrame = document.getElementById("videoFrame");
+            videoButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    const videoUrl = this.getAttribute("data-video") + "?autoplay=1";
+                    videoFrame.src = videoUrl;
+                });
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

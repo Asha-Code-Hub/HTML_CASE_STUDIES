@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interview Preparation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<style>
+body {
+  padding-bottom: 50px; /* Space for footer */
+}
+  
+  .profile-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 100px auto 80px auto; /* Added margin-bottom to avoid overlap with footer */
+    padding: 20px;
+    background-color: #dde3e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+  
+  .profile-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+    font-weight: bold;
+  }
+
+ 
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    box-sizing: border-box;
+  }
+
+  
+  .form-group textarea {
+    resize: vertical;
+  }
+
+ 
+  .form-group input[type="file"] {
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  /* Button styling */
+  button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Button hover effect */
+  button:hover {
+    background-color: #45a049;
+  }
+
+  /* Profile photo styling */
+  .profile-photo {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .profile-photo img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 10px auto;
+  }
+
+  /* Responsive styling for smaller screens */
+  @media (max-width: 768px) {
+    .profile-container {
+        margin-top: 120px; /* Increase spacing for smaller screens */
+    }
+}
+
+
+    .profile-container h1 {
+      font-size: 1.5rem;
+    }
+
+    button {
+      font-size: 1rem;
+    }
+  
+
+    footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    border-top: 1px solid #ccc;
+}
+
+</style>
+
+<header id="home">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top">
+    <div class="container-fluid">
+        <img src="https://thumbs.dreamstime.com/b/interview-preparation-process-outline-icon-logo-illustration-239665838.jpg" 
+             alt="logo" width="40" height="50" class="d-inline-block align-text-top">
+        <a class="navbar-brand fs-3" href="#">Interview-<span class="text-primary">Preparation</span></a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-5 text-center">
+                <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="user.html">Profile</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="interviewDropdown" role="button" 
+                       data-bs-toggle="dropdown" aria-expanded="false">Interviews</a>
+                    <ul class="dropdown-menu" aria-labelledby="interviewDropdown">
+                        <li><a class="dropdown-item" href="practice.html">Practice Interviews</a></li>
+                        <li><a class="dropdown-item" href="mock.html">Mock Interviews</a></li>
+                        <li><a class="dropdown-item" href="tips.html">Interview Tips</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="tracking.html">Progress Tracking</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="tutorial.html">Video Tutorials</a>
+              </li>
+
+                <li class="nav-item"><a class="nav-link" href="intnotefication.html">Notifications</a></li>
+                <li class="nav-item">
+                    <button class="btn btn-success ms-3" onclick="window.location.href='login.html';">LogOut</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+</header>
+
+<div class="profile-container">
+    <h1>Create Your Profile</h1>
+    <form id="profileForm">
+      <div class="profile-photo">
+        <label for="photo"><b>Upload Profile Photo</b></label><br><br>
+        <img id="photoPreview" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJdauKmK3JP7AREOlnMCR8e6f5i1-Ci0cNkA&s" alt="Profile Photo Preview" style="display: none;">
+        <input type="file" id="photo" accept="image/*" onchange="previewPhoto(event)">
+      </div>
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="bio">Bio</label>
+        <textarea id="bio" placeholder="Write a short bio" rows="4" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="jobPreferences">Job Preferences</label>
+        <select id="jobPreferences">
+          <option value="">Select a job role</option>
+          <option>Frontend Developer</option>
+          <option>Backend Developer</option>
+          <option>Full Stack Developer</option>
+          <option>UI/UX Designer</option>
+          <option>Data Analyst</option>
+        </select>
+      </div>
+      <button type="submit">Save Profile</button>
+    </form>
+</div>
+<footer id="footer">
+  <p>&copy; <span id="year"></span> Copyright 2025.</p>
+</footer> 
+
+<script>
+    function previewPhoto(event) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        const photoPreview = document.getElementById('photoPreview');
+        photoPreview.src = e.target.result;
+        photoPreview.style.display = 'block';
+      }
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }
+
+    document.getElementById('profileForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const bio = document.getElementById('bio').value;
+      const jobPreferences = document.getElementById('jobPreferences').value;
+
+      console.log('Profile Saved:');
+      console.log('Name:', name);
+      console.log('Bio:', bio);
+      console.log('Job Preferences:', jobPreferences);
+
+      alert('Profile has been saved!');
+    });
+
+    // Update the year dynamically
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interview Preparation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<style>
+  body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background-color: #6daee7;
+}
+
+#app {
+text-align: center;
+}
+
+h1 {
+font-size: 2rem;
+}
+
+button {
+padding: 10px 20px;
+font-size: 1rem;
+cursor: pointer;
+border: none;
+background-color: #4CAF50;
+color: white;
+border-radius: 5px;
+margin-top: 10px;
+}
+
+button:hover {
+background-color: #45a049;
+}
+
+@media (max-width: 600px) {
+h1 {
+  font-size: 1.5rem;
+}
+
+button {
+  width: 100%;
+  font-size: 1.2rem;
+}
+}
+footer {
+    text-align: center;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    
+  }
+
+</style>
+</body>
+
+  <header id="home">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top">
+        <div class="container-fluid">
+            <img src="https://thumbs.dreamstime.com/b/interview-preparation-process-outline-icon-logo-illustration-239665838.jpg" 
+                 alt="logo" width="40" height="50" class="d-inline-block align-text-top">
+            <a class="navbar-brand fs-3" href="#">Interview-<span class="text-primary">Preparation</span></a>
+            
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-5 text-center">
+                  <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#aboutus">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="user.html">Profile</a>
+                    </li>
+                    
+                    <!-- Dropdown Menu -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="interviewDropdown" role="button" 
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Interviews
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="interviewDropdown">
+                            <li><a class="dropdown-item" href="practice.html">Practice Interviews</a></li>
+                            <li><a class="dropdown-item" href="mock.html">Mock Interviews</a></li>
+                            <li><a class="dropdown-item" href="tips.html">Interview Tips</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="tracking.html">Progress Tracking</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="intnotefication.html">Notifications</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <button class="btn btn-success ms-3" onclick="window.location.href='login.html';">LogOut</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<br><br><br>
+
+  <div id="app">
+    <h1>Welcome to Interview Preparation</h1>
+    <button id="interviewBtn">Scheduled Interview Reminder</button>
+    <button id="tipsBtn">New Interview Tips</button>
+    <button id="updateBtn">New Updates Available</button>
+  </div>
+  <footer id="footer">
+    <p>&copy; <span id="year"></span>Copyright 2025.</p>
+          </footer>
+  <script>
+    
+if ('Notification' in window) {
+  
+  document.getElementById('interviewBtn').addEventListener('click', () => {
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        showNotification('Interview Prep Reminder', 'Your mock interview is scheduled for tomorrow. Get ready with some practice questions!');
+      } else {
+        alert('Permission denied');
+      }
+    });
+  });
+
+  document.getElementById('tipsBtn').addEventListener('click', () => {
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        showNotification('New Interview Tips', 'Check out the latest tips on acing your interview! Don\'t miss out!');
+      } else {
+        alert('Permission denied');
+      }
+    });
+  });
+
+  document.getElementById('updateBtn').addEventListener('click', () => {
+    Notification.requestPermission().then(permission => {
+      if (permission === 'granted') {
+        showNotification('New Update Available', 'We have updated your interview prep content! Check it out now!');
+      } else {
+        alert('Permission denied');
+      }
+    });
+  });
+}
+
+
+function showNotification(title, body) {
+  const options = {
+    body: body,
+    icon: 'https://via.placeholder.com/100', 
+    vibrate: [200, 100, 200],
+    tag: 'interview-prep-notification',
+  };
+
+  const notification = new Notification(title, options);
+
+  
+  setTimeout(() => {
+    notification.close();
+  }, 5000);
+}
+
+</script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    </body>
+    </html>
