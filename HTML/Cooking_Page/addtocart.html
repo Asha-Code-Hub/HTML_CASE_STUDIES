@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f8f8f8; }
+        .product-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .product { 
+            width: 200px; padding: 15px; border: 1px solid #ccc; background: white; border-radius: 10px;
+            text-align: center; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .product img { width: 100%; height: 150px; border-radius: 10px; }
+        button { background-color: #ff4081; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #d83670; }
+
+        #searchInput {
+    width: 80%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 15px auto;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="text-center">Cooking Store</h2>
+        <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
+        <div class="row" id="product-list"></div>
+    </div>
+   
+
+    <div class="product-container">
+        <div class="product">
+            <img src="https://myborosil.com/cdn/shop/files/my-borosil-kadhai-borosil-pro-chef-non-stick-kadhai-w-lid-32467762675850.jpg" alt="Non-Stick Pan">
+            <p><b>Non-Stick Pan</b></p>
+            <p>Price: $10</p>
+            <button onclick="addToCart('Non-Stick Pan', 10, 'https://myborosil.com/cdn/shop/files/my-borosil-kadhai-borosil-pro-chef-non-stick-kadhai-w-lid-32467762675850.jpg')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://m.media-amazon.com/images/I/91BncDi2IAL._AC_UF350,350_QL80_.jpg" alt="Chef Knife">
+            <p><b>Chef Knife</b></p>
+            <p>Price: $20</p>
+            <button onclick="addToCart('Chef Knife', 20, 'https://m.media-amazon.com/images/I/91BncDi2IAL._AC_UF350,350_QL80_.jpg')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://www.ikea.com/in/en/images/products/vispning-mixing-bowl-grey-green__1299758_pe936755_s5.jpg" alt="Mixing Bowl Set">
+            <p><b>Mixing Bowl Set</b></p>
+            <p>Price: $30</p>
+            <button onclick="addToCart('Mixing Bowl Set', 30, 'https://www.ikea.com/in/en/images/products/vispning-mixing-bowl-grey-green__1299758_pe936755_s5.jpg')">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXgTUMWva2-s1zb1_iPasOElOCqFeQfK9WSw&s" alt="Measuring Cups">
+            <p><b>Measuring Cups</b></p>
+            <p>Price: $40</p>
+            <button onclick="addToCart('Measuring Cups', 30, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXgTUMWva2-s1zb1_iPasOElOCqFeQfK9WSw&s')">Add to Cart</button>
+        </div>
+    </div>
+
+
+    <br>
+    <a href="cart.html">Go to Cart</a>
+    <script>
+         function searchProducts(){
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let pros = document.getElementsByClassName("product");
+            for(let i of pros){
+                i.style.display = i.innerText.toLowerCase().includes(input)?"block":"none";
+            }
+        }
+
+        function addToCart(name,price,imgi){
+            let cart = JSON.parse(localStorage.getItem("cart"))||[];
+            cart.push({name,price,imgi});
+            localStorage.setItem("cart",JSON.stringify(cart));
+            // alert(${name} added Sucessfully);
+
+        }
+        function searchProducts() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let products = document.getElementsByClassName("product");
+    
+    for (let product of products) {
+        let productName = product.querySelector("p b").innerText.toLowerCase();
+        if (productName.includes(input)) {
+            product.style.display = "block"; // Show matching products
+        } else {
+            product.style.display = "none"; // Hide non-matching products
+        }
+    }
+}
+
+
+    </script>
+</body>
+</html>
